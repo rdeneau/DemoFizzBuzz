@@ -8,7 +8,7 @@ namespace DemoFizzBuzz
         [Fact]
         public void Return_1_Given_1()
         {
-            new FizzBuzz().Of(1);
+            new FizzBuzz().Of(1).Should().Be("1");
         }
     }
 
