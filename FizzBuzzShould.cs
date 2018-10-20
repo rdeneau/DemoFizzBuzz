@@ -10,6 +10,12 @@ namespace DemoFizzBuzz
         {
             FizzBuzz.Of(1).Should().Be("1");
         }
+
+        [Fact]
+        public void Return_2_Given_2()
+        {
+            FizzBuzz.Of(2).Should().Be("2");
+        }
     }
 
     // Prod
