@@ -18,7 +18,7 @@ namespace DemoFizzBuzz
     {
         public string Of(int number)
         {
-            return "";
+            return "1";
         }
     }
 }
