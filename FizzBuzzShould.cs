@@ -8,11 +8,17 @@ namespace DemoFizzBuzz
         [Fact]
         public void Return_1_Given_1()
         {
-            new FizzBuzz();
+            new FizzBuzz().Of(1);
         }
     }
 
     // Prod
 
-    public class FizzBuzz {}
+    public class FizzBuzz
+    {
+        public string Of(int number)
+        {
+            return "";
+        }
+    }
 }
