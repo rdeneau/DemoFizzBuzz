@@ -8,15 +8,15 @@ namespace DemoFizzBuzz
         [Fact]
         public void Return_1_Given_1()
         {
-            new FizzBuzz().Of(1).Should().Be("1");
+            FizzBuzz.Of(1).Should().Be("1");
         }
     }
 
     // Prod
 
-    public class FizzBuzz
+    public static class FizzBuzz
     {
-        public string Of(int number)
+        public static string Of(int number)
         {
             return "1";
         }
