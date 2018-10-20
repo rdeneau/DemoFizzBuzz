@@ -35,9 +35,11 @@ namespace DemoFizzBuzz
     {
         public static string Of(int number)
         {
-            if (number % 3 == 0) return "Fizz";
-            if (number % 5 == 0) return "Buzz";
+            if (number.IsMultipleOf(3)) return "Fizz";
+            if (number.IsMultipleOf(5)) return "Buzz";
             return $"{number}";
         }
+
+        private static bool IsMultipleOf(this int number, int factor) => number % factor == 0;
     }
 }
