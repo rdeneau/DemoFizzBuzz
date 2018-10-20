@@ -27,6 +27,7 @@ namespace DemoFizzBuzz
     {
         public static string Of(int number)
         {
+            if (number % 3 == 0) return "Fizz";
             return $"{number}";
         }
     }
