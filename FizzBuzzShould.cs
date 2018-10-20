@@ -33,6 +33,7 @@ namespace DemoFizzBuzz
 
         [Theory]
         [InlineData(15)]
+        [InlineData(30)]
         public void Return_FizzBuzz_Given_Multiple_Of_15(int number)
         {
             number.FizzBuzz().Should().Be("FizzBuzz");
