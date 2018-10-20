@@ -20,6 +20,13 @@ namespace DemoFizzBuzz
         {
             FizzBuzz.Of(number).Should().Be("Fizz");
         }
+
+        [Theory]
+        [InlineData(5)]
+        public void Return_Buzz_Given_Multiple_Of_5(int number)
+        {
+            FizzBuzz.Of(number).Should().Be("Buzz");
+        }
     }
 
     // Prod
