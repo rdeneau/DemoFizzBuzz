@@ -46,8 +46,8 @@ namespace DemoFizzBuzz
     {
         public static string FizzBuzz(this int number) =>
             Rule.All
-                        .First(rule => rule.IsSatisfied(number))
-                        .Result(number);
+                .First(rule => rule.IsSatisfied(number))
+                .Result(number);
 
         private abstract class Rule
         {
@@ -64,7 +64,7 @@ namespace DemoFizzBuzz
             public abstract bool IsSatisfied(int number);
             public abstract string Result(int number);
 
-            private class DefaultRule : Rule
+            private sealed class DefaultRule : Rule
             {
                 public override bool IsSatisfied(int number) => true;
                 public override string Result(int number) => $"{number}";
@@ -76,19 +76,19 @@ namespace DemoFizzBuzz
                 protected abstract int Factor { get; }
             }
 
-            private class FizzRule : FactorRule
+            private sealed class FizzRule : FactorRule
             {
                 protected override int Factor => 3;
                 public override string Result(int number) => "Fizz";
             }
 
-            private class BuzzRule : FactorRule
+            private sealed class BuzzRule : FactorRule
             {
                 protected override int Factor => 5;
                 public override string Result(int number) => "Buzz";
             }
 
-            private class FizzBuzzRule : FactorRule
+            private sealed class FizzBuzzRule : FactorRule
             {
                 protected override int Factor => 15;
                 public override string Result(int number) => "FizzBuzz";
