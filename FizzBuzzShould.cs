@@ -25,6 +25,7 @@ namespace DemoFizzBuzz
 
         [Theory]
         [InlineData(5)]
+        [InlineData(10)]
         public void Return_Buzz_Given_Multiple_Of_5(int number)
         {
             number.FizzBuzz().Should().Be("Buzz");
