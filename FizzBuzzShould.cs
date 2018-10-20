@@ -24,9 +24,7 @@ namespace DemoFizzBuzz
     {
         public static string Of(int number)
         {
-            if (number == 2) return $"{number}";
-            if (number == 1) return $"{number}";
-            return "";
+            return $"{number}";
         }
     }
 }
