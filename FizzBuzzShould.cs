@@ -5,16 +5,12 @@ namespace DemoFizzBuzz
 {
     public class FizzBuzzShould
     {
-        [Fact]
-        public void Return_1_Given_1()
+        [Theory]
+        [InlineData(1)]
+        [InlineData(2)]
+        public void Return_Given_Number_Stringifyed(int number)
         {
-            FizzBuzz.Of(1).Should().Be("1");
-        }
-
-        [Fact]
-        public void Return_2_Given_2()
-        {
-            FizzBuzz.Of(2).Should().Be("2");
+            FizzBuzz.Of(number).Should().Be(number.ToString());
         }
     }
 
