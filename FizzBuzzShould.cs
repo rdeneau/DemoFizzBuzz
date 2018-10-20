@@ -6,9 +6,13 @@ namespace DemoFizzBuzz
     public class FizzBuzzShould
     {
         [Fact]
-        public void SmokeTest()
+        public void Return_1_Given_1()
         {
-            true.Should().Be(false);
+            new FizzBuzz();
         }
     }
+
+    // Prod
+
+    public class FizzBuzz {}
 }
