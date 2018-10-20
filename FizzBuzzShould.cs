@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Linq;
 using FluentAssertions;
 using Xunit;
 
@@ -33,11 +35,48 @@ namespace DemoFizzBuzz
 
     public static class NumberExtensions
     {
-        public static string FizzBuzz(this int number)
+        public static string FizzBuzz(this int number) =>
+            FizzBuzzRule.All
+                        .First(rule => rule.IsSatisfied(number))
+                        .Result(number);
+
+        private abstract class FizzBuzzRule
         {
-            if (number.IsMultipleOf(3)) return "Fizz";
-            if (number.IsMultipleOf(5)) return "Buzz";
-            return $"{number}";
+            public static readonly IReadOnlyList<FizzBuzzRule> All = new FizzBuzzRule[]
+            {
+                new FizzRule(),
+                new BuzzRule(),
+                new DefaultRule()
+            };
+
+            private FizzBuzzRule() { }
+
+            public abstract bool IsSatisfied(int number);
+            public abstract string Result(int number);
+
+            private class DefaultRule : FizzBuzzRule
+            {
+                public override bool IsSatisfied(int number) => true;
+                public override string Result(int number) => $"{number}";
+            }
+
+            private abstract class FactorRule : FizzBuzzRule
+            {
+                public override bool IsSatisfied(int number) => number.IsMultipleOf(Factor);
+                protected abstract int Factor { get; }
+            }
+
+            private class FizzRule : FactorRule
+            {
+                protected override int Factor => 3;
+                public override string Result(int number) => "Fizz";
+            }
+
+            private class BuzzRule : FactorRule
+            {
+                protected override int Factor => 5;
+                public override string Result(int number) => "Buzz";
+            }
         }
 
         private static bool IsMultipleOf(this int number, int factor) => number % factor == 0;
