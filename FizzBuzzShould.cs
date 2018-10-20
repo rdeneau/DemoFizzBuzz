@@ -15,6 +15,7 @@ namespace DemoFizzBuzz
 
         [Theory]
         [InlineData(3)]
+        [InlineData(6)]
         public void Return_Fizz_Given_Multiple_Of_3(int number)
         {
             FizzBuzz.Of(number).Should().Be("Fizz");
