@@ -25,7 +25,8 @@ namespace DemoFizzBuzz
         public static string Of(int number)
         {
             if (number == 2) return "2";
-            return "1";
+            if (number == 1) return "1";
+            return "";
         }
     }
 }
