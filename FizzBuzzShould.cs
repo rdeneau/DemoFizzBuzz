@@ -44,31 +44,32 @@ namespace DemoFizzBuzz
     public static class NumberExtensions
     {
         public static string FizzBuzz(this int number) =>
-            FizzBuzzRule.All
+            Rule.All
                         .First(rule => rule.IsSatisfied(number))
                         .Result(number);
 
-        private abstract class FizzBuzzRule
+        private abstract class Rule
         {
-            public static readonly IReadOnlyList<FizzBuzzRule> All = new FizzBuzzRule[]
+            public static readonly IReadOnlyList<Rule> All = new Rule[]
             {
+                new FizzBuzzRule(),
                 new FizzRule(),
                 new BuzzRule(),
                 new DefaultRule()
             };
 
-            private FizzBuzzRule() { }
+            private Rule() { }
 
             public abstract bool IsSatisfied(int number);
             public abstract string Result(int number);
 
-            private class DefaultRule : FizzBuzzRule
+            private class DefaultRule : Rule
             {
                 public override bool IsSatisfied(int number) => true;
                 public override string Result(int number) => $"{number}";
             }
 
-            private abstract class FactorRule : FizzBuzzRule
+            private abstract class FactorRule : Rule
             {
                 public override bool IsSatisfied(int number) => number.IsMultipleOf(Factor);
                 protected abstract int Factor { get; }
@@ -84,6 +85,12 @@ namespace DemoFizzBuzz
             {
                 protected override int Factor => 5;
                 public override string Result(int number) => "Buzz";
+            }
+
+            private class FizzBuzzRule : FactorRule
+            {
+                protected override int Factor => 15;
+                public override string Result(int number) => "FizzBuzz";
             }
         }
 
